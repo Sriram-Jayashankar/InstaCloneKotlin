@@ -39,10 +39,15 @@ class PostActivity : AppCompatActivity() {
         getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
         getSupportActionBar()?.setDisplayShowHomeEnabled(true)
         binding.materialtoolbar.setOnClickListener{
+            startActivity(Intent(this@PostActivity,HomeActivity::class.java))
             finish()
         }
         binding.imagepost.setOnClickListener{
             launcher.launch("image/*")
+        }
+        binding.cancelBtn.setOnClickListener {
+            startActivity(Intent(this@PostActivity,HomeActivity::class.java))
+            finish()
         }
         binding.postBtn.setOnClickListener{
             val post:Post=Post(imageUrl!!,binding.Caption.editText?.text.toString())
