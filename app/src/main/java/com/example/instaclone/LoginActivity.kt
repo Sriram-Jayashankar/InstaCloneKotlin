@@ -35,6 +35,7 @@ class LoginActivity : AppCompatActivity() {
                     .addOnCompleteListener {
                         if (it.isSuccessful) {
                             startActivity(Intent(this@LoginActivity,HomeActivity::class.java))
+                            finish()
                         } else {
                             Toast.makeText(
                                 this@LoginActivity,

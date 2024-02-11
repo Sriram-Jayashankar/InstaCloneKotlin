@@ -1,33 +1,31 @@
 package com.example.instaclone.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.instaclone.R
+import com.example.instaclone.Utils.USER_NODE
+import com.example.instaclone.databinding.FragmentProfileBinding
+import com.example.instaclone.models.User
+import com.example.instaclone.signUpActivity
+import com.google.firebase.Firebase
+import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
+import com.google.firebase.firestore.firestore
+import com.google.firebase.firestore.toObject
+import com.squareup.picasso.Picasso
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ProfileFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ProfileFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private lateinit var binding:FragmentProfileBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
     override fun onCreateView(
@@ -35,25 +33,30 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        binding=FragmentProfileBinding.inflate(inflater,container,false)
+        binding.editProfile.setOnClickListener {
+            val intent=Intent(activity,signUpActivity::class.java)
+            intent.putExtra("MODE",1)
+            activity?.startActivity(intent)
+            activity?.finish()
+        }
+        return binding.root
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ProfileFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ProfileFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Firebase.firestore.collection(USER_NODE).document(Firebase.auth.currentUser!!.uid).get()
+            .addOnSuccessListener {
+                val user:User=it.toObject<User>()!!
+                binding.name.text=user.name
+                binding.bio.text=user.email
+                if(!user.image.isNullOrEmpty())
+                {
+                    Picasso.get().load(user.image).into(binding.profileImage)
                 }
             }
     }
