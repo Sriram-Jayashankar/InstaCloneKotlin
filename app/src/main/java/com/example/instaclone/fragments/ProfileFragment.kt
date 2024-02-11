@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.instaclone.R
 import com.example.instaclone.Utils.USER_NODE
+import com.example.instaclone.adapters.ViewPagerAdapter
 import com.example.instaclone.databinding.FragmentProfileBinding
 import com.example.instaclone.models.User
 import com.example.instaclone.signUpActivity
@@ -22,6 +23,7 @@ import com.squareup.picasso.Picasso
 class ProfileFragment : Fragment() {
 
     private lateinit var binding:FragmentProfileBinding
+    private lateinit var viewPagerAdapter: ViewPagerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +42,12 @@ class ProfileFragment : Fragment() {
             activity?.startActivity(intent)
             activity?.finish()
         }
+        viewPagerAdapter= ViewPagerAdapter(requireActivity().supportFragmentManager)
+        viewPagerAdapter.addFragments(MyPostFragment(),"My Post")
+        viewPagerAdapter.addFragments(MyReelsFragment(),"My Reels")
+        binding.viewPager.adapter=viewPagerAdapter
+binding.TabLayout.setupWithViewPager(binding.viewPager)
+
         return binding.root
     }
 
