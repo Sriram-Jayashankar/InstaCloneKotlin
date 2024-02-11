@@ -1,9 +1,16 @@
 package com.example.instaclone
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Html
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContract
+import androidx.activity.result.contract.ActivityResultContracts
+import com.example.instaclone.Utils.USER_NODE
+import com.example.instaclone.Utils.USER_PROFILE_FOLDER
+import com.example.instaclone.Utils.uploadImage
 import com.example.instaclone.databinding.ActivitySignUpBinding
 import com.example.instaclone.models.User
 import com.google.firebase.Firebase
@@ -16,10 +23,25 @@ class signUpActivity : AppCompatActivity() {
     val binding by lazy {
         ActivitySignUpBinding.inflate(layoutInflater)
     }
-    lateinit var user:User
+    lateinit var user:User//create user based on user model
+    private val launcher=registerForActivityResult(ActivityResultContracts.GetContent()){
+        uri->
+        uri?.let{
+            uploadImage(uri, USER_PROFILE_FOLDER){
+                if(it==null){
+
+                }else{
+                    user.image=it
+                    binding.profileImage.setImageURI(uri)
+                }
+            }
+        }
+    }//create a launcher to put picture wehen you click on addpic
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        val text="<font color=#FF000000>Already have an account</font><font color=#248bdc>  Login?</font>"
+        binding.loginrender.setText(Html.fromHtml(text))
         val db = Firebase.firestore
 user= User()
         binding.signUpBtn.setOnClickListener{
@@ -39,9 +61,11 @@ user= User()
                         user.name=binding.namefield.editText?.text.toString();
                         user.password=binding.passwordfield.editText?.text.toString();
                         user.email=binding.emailfield.editText?.text.toString()
-                        Firebase.firestore.collection("User").document(Firebase.auth.currentUser!!.uid)
+                        Firebase.firestore.collection(USER_NODE).document(Firebase.auth.currentUser!!.uid)
                             .set(user)
-                            .addOnSuccessListener { Toast.makeText(this@signUpActivity, "SignUp successful", Toast.LENGTH_SHORT).show() }
+                            .addOnSuccessListener {
+                                startActivity(Intent(this@signUpActivity,HomeActivity::class.java))
+                            }
                             .addOnFailureListener { e ->
                                     Log.w("why", "Error adding document", e)
                             }
@@ -52,6 +76,12 @@ user= User()
 
 
             }
+        }
+        binding.AddImage.setOnClickListener{
+            launcher.launch("image/*")
+        }
+        binding.loginrender.setOnClickListener {
+            startActivity(Intent(this@signUpActivity,LoginActivity::class.java))
         }
     }
 }
