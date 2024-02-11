@@ -27,9 +27,12 @@ class AddFragment : BottomSheetDialogFragment() {
         binding=FragmentAddBinding.inflate(inflater,container,false)
         binding.post.setOnClickListener{
             activity?.startActivity(Intent(requireContext(),PostActivity::class.java))
+            activity?.finish()
+
         }
         binding.reel.setOnClickListener{
             activity?.startActivity(Intent(requireContext(),ReelsActivity::class.java))
+            activity?.finish()
         }
         return binding.root
     }

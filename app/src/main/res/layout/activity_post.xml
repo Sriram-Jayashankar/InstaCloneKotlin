@@ -19,7 +19,7 @@
         app:title="New Post" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imagepost"
         android:layout_width="0dp"
         android:layout_height="200dp"
         android:layout_margin="10dp"
@@ -30,15 +30,15 @@
         app:layout_constraintTop_toBottomOf="@+id/materialtoolbar" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
+        android:id="@+id/Caption"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:hint="Write a Caption"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="@+id/imagepost"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2">
+        app:layout_constraintStart_toStartOf="@+id/imagepost"
+        app:layout_constraintTop_toBottomOf="@+id/imagepost">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -53,9 +53,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+        app:layout_constraintEnd_toEndOf="@+id/Caption"
+        app:layout_constraintStart_toStartOf="@+id/Caption"
+        app:layout_constraintTop_toBottomOf="@+id/Caption">
 
         <ImageView
             android:layout_width="40dp"
@@ -93,6 +93,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3">
 
         <Button
+            android:id="@+id/cancelBtn"
             style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -107,6 +108,7 @@
             app:layout_constraintTop_toBottomOf="@+id/passwordfield" />
 
         <Button
+            android:id="@+id/postBtn"
             style="@style/Widget.Material3.Button.Icon"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
