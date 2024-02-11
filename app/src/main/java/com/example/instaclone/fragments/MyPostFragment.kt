@@ -46,6 +46,7 @@ private lateinit var binding:FragmentMyPostBinding
         return binding.root
     }
 
+
     companion object {
 
     }

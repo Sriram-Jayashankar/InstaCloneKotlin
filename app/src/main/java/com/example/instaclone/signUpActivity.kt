@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
@@ -59,8 +60,8 @@ class signUpActivity : AppCompatActivity() {
                             Picasso.get().load(user.image).into(binding.profileImage)
                         }
                         binding.namefield.editText?.setText(user.name)
-                        binding.emailfield.editText?.setText(user.email)
-                        binding.passwordfield.editText?.setText(user.password)
+                        binding.emailfield.visibility=View.INVISIBLE
+                        binding.passwordfield.visibility=View.INVISIBLE
 
                     }
             }
@@ -69,8 +70,6 @@ class signUpActivity : AppCompatActivity() {
             if (intent.hasExtra("MODE")) {
                 if (intent.getIntExtra("MODE", -1) == 1) {
                     user.name = binding.namefield.editText?.text.toString();
-                    user.password = binding.passwordfield.editText?.text.toString();
-                    user.email = binding.emailfield.editText?.text.toString()
                     Firebase.firestore.collection(USER_NODE)
                         .document(Firebase.auth.currentUser!!.uid)
                         .set(user)

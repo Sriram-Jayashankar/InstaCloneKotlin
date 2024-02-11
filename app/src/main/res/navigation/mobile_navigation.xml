@@ -8,25 +8,30 @@
         android:id="@+id/home"
         android:name="com.example.instaclone.fragments.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home"
+        app:launchSingleTop="true"/>
     <fragment
         android:id="@+id/search"
         android:name="com.example.instaclone.fragments.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search"
+        app:launchSingleTop="true"/>
     <dialog
         android:id="@+id/add"
         android:name="com.example.instaclone.fragments.AddFragment"
         android:label="fragment_add"
-        tools:layout="@layout/fragment_add" />
+        tools:layout="@layout/fragment_add"
+        app:launchSingleTop="true"/>
     <fragment
         android:id="@+id/reel"
         android:name="com.example.instaclone.fragments.ReelFragment"
         android:label="fragment_reel"
-        tools:layout="@layout/fragment_reel" />
+        tools:layout="@layout/fragment_reel"
+        app:launchSingleTop="true"/>
     <fragment
         android:id="@+id/profile"
         android:name="com.example.instaclone.fragments.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile"
+        app:launchSingleTop="true"/>
 </navigation>

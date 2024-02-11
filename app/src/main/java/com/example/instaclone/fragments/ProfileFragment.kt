@@ -1,3 +1,4 @@
+
 package com.example.instaclone.fragments
 
 import android.content.Intent
@@ -42,11 +43,18 @@ class ProfileFragment : Fragment() {
             activity?.startActivity(intent)
             activity?.finish()
         }
+        binding.logout.setOnClickListener {
+            // Log out the user
+            FirebaseAuth.getInstance().signOut()
+            // Navigate back to the sign-up activity
+            startActivity(Intent(activity, signUpActivity::class.java))
+            activity?.finish()
+        }
         viewPagerAdapter= ViewPagerAdapter(requireActivity().supportFragmentManager)
         viewPagerAdapter.addFragments(MyPostFragment(),"My Post")
         viewPagerAdapter.addFragments(MyReelsFragment(),"My Reels")
         binding.viewPager.adapter=viewPagerAdapter
-binding.TabLayout.setupWithViewPager(binding.viewPager)
+        binding.TabLayout.setupWithViewPager(binding.viewPager)
 
         return binding.root
     }

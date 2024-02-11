@@ -7,10 +7,9 @@
     android:orientation="vertical"
     tools:context=".fragments.ProfileFragment">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_image"
@@ -26,40 +25,58 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/bio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="bio"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/profile_image"
-            app:layout_constraintTop_toBottomOf="@+id/name" />
-
-        <TextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="name"
+            android:maxLines="2"
+            android:text=""
+            android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/bio"
             app:layout_constraintStart_toEndOf="@+id/profile_image"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/bio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text=""
+            android:maxLines="2"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/editProfile"
+            app:layout_constraintStart_toEndOf="@+id/profile_image"
+            app:layout_constraintTop_toBottomOf="@+id/name" />
 
         <Button
             android:id="@+id/editProfile"
             style="@style/Widget.Material3.Button.Icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:backgroundTint="@color/blue"
             android:text="Edit Profile"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/profile_image"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.881"
-            app:layout_constraintStart_toEndOf="@+id/profile_image"
-            app:layout_constraintTop_toTopOf="@+id/profile_image"
-            app:layout_constraintVertical_bias="0.426" />
+            app:layout_constraintEnd_toEndOf="@id/profile_image"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/profile_image"
+            app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+
+        <Button
+            android:id="@+id/logout"
+            style="@style/Widget.Material3.Button.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="72dp"
+            android:backgroundTint="@color/red"
+            android:text="Logout"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/editProfile"
+            app:layout_constraintStart_toEndOf="@id/editProfile"
+            app:layout_constraintTop_toTopOf="@id/editProfile"
+            app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
