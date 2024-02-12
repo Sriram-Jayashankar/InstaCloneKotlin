@@ -10,12 +10,6 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home"
         app:launchSingleTop="true"/>
-    <fragment
-        android:id="@+id/search"
-        android:name="com.example.instaclone.fragments.SearchFragment"
-        android:label="fragment_search"
-        tools:layout="@layout/fragment_search"
-        app:launchSingleTop="true"/>
     <dialog
         android:id="@+id/add"
         android:name="com.example.instaclone.fragments.AddFragment"

@@ -24,66 +24,47 @@
         android:layout_width="0dp"
         android:layout_height="200dp"
         android:layout_margin="10dp"
-        android:src="@drawable/image"
+        android:src="@drawable/imageupload"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialtoolbar" />
 
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Caption"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="28dp"
         android:hint="Write a Caption"
         app:layout_constraintEnd_toEndOf="@+id/imagepost"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/imagepost"
         app:layout_constraintTop_toBottomOf="@+id/imagepost">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="visible" />
+            android:visibility="visible"
+            android:maxLines="2"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <LinearLayout
-        android:id="@+id/post"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="@+id/Caption"
-        app:layout_constraintStart_toStartOf="@+id/Caption"
-        app:layout_constraintTop_toBottomOf="@+id/Caption">
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/more_add" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:text="Share to Post"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Your video will appear in posts and will be seen by all.Your posts can also been seen in your profile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/post" />
+        android:layout_marginTop="28dp"
+        android:text="Privacy Policy for Posts:\n\n
+    • Your posts may appear in public areas of the platform and will be visible to all users.\n\n
+    • Your posts can also be viewed on your profile by anyone who visits it.\n\n
+    • Instagram's privacy settings allow you to control who can see your posts and interact with them.\n\n
+    • You have the option to make your account private, restricting access to your posts to only approved followers.\n\n
+"
+        app:layout_constraintEnd_toEndOf="@+id/Caption"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/Caption"
+        app:layout_constraintTop_toBottomOf="@+id/Caption" />
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -3,6 +3,7 @@ package com.example.instaclone.posts
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.instaclone.HomeActivity
 import com.example.instaclone.R
@@ -53,32 +54,36 @@ class PostActivity : AppCompatActivity() {
             finish()
         }
         binding.postBtn.setOnClickListener {
-            Firebase.firestore.collection(USER_NODE).document().get()
-                .addOnSuccessListener {
-                    val post: Post = Post(
-                        postUrl = imageUrl!!,
-                        caption = binding.Caption.editText?.text.toString(),
-                        uid = Firebase.auth.currentUser!!.uid,
-                        time=System.currentTimeMillis().toString()
-                    )
-                    Firebase.firestore.collection(POST).document().set(post)
-                        .addOnSuccessListener {
-                            Firebase.firestore.collection(Firebase.auth.currentUser!!.uid)
-                                .document()
-                                .set(post)
-                                .addOnSuccessListener {
-                                    startActivity(
-                                        Intent(
-                                            this@PostActivity,
-                                            HomeActivity::class.java
+            val caption = binding.Caption.editText?.text.toString()
+            if (imageUrl == null || caption.isEmpty()) {
+                Toast.makeText(this, "Please fill in all the fields", Toast.LENGTH_SHORT).show()
+            } else {
+                Firebase.firestore.collection(USER_NODE).document().get()
+                    .addOnSuccessListener {
+                        val post: Post = Post(
+                            postUrl = imageUrl!!,
+                            caption = binding.Caption.editText?.text.toString(),
+                            uid = Firebase.auth.currentUser!!.uid,
+                            time = System.currentTimeMillis().toString()
+                        )
+                        Firebase.firestore.collection(POST).document().set(post)
+                            .addOnSuccessListener {
+                                Firebase.firestore.collection(Firebase.auth.currentUser!!.uid)
+                                    .document()
+                                    .set(post)
+                                    .addOnSuccessListener {
+                                        startActivity(
+                                            Intent(
+                                                this@PostActivity,
+                                                HomeActivity::class.java
+                                            )
                                         )
-                                    )
-                                    finish()
-                                }
-                        }
-                }
+                                        finish()
+                                    }
+                            }
+                    }
 
+            }
         }
-
     }
 }

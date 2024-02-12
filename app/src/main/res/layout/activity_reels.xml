@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="New Post" />
+        app:title="New Reel" />
 
     <Button
         android:id="@+id/reelpost"
@@ -45,46 +45,30 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="visible" />
+            android:visibility="visible"
+            android:maxLines="2"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <LinearLayout
-        android:id="@+id/post"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="@+id/Caption"
-        app:layout_constraintStart_toStartOf="@+id/Caption"
-        app:layout_constraintTop_toBottomOf="@+id/Caption">
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/reel" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:text="Share to Reel"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:layout_weight="1"
-        android:text="Your video will appear in posts and will be seen by all.Your posts can also been seen in your profile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/post" />
+        android:text="
+    1. Respect Copyright: Ensure that the content uploaded does not violate copyright laws and respects the intellectual property of others.\n\n
+    2. Avoid Inappropriate Content: Content should not contain nudity, violence, hate speech, or any form of harassment.\n\n
+    3. Follow Community Guidelines: Adhere to Instagram's community guidelines, which promote a safe and respectful environment for all users.\n\n
+    4. Prevent Copyright Infringement: Do not use copyrighted material without proper authorization or licensing.\n\n
+    5. Foster Positive Community: Share content that contributes to a positive online community and avoids spreading misinformation or harmful messages.\n\n
+    6. Compliance with Policies: Agree to comply with Instagram's policies and regulations to prevent content removal or account suspension.\n\n
+    "
+        app:layout_constraintEnd_toEndOf="@+id/Caption"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintStart_toStartOf="@+id/Caption"
+        app:layout_constraintTop_toBottomOf="@+id/Caption" />
 
     <LinearLayout
         android:layout_width="match_parent"

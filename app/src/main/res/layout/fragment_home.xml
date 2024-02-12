@@ -19,42 +19,42 @@
         app:title="Instagram"
         app:titleMarginStart="30dp" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/materialToolbar">
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linearLayout2"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:orientation="horizontal"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/materialToolbar">-->
 
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="64dp"
-            android:layout_height="65dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:src="@drawable/userprofile"
-            app:layout_constraintVertical_bias="0.0" />
+<!--        <de.hdodenhof.circleimageview.CircleImageView-->
+<!--            android:layout_width="64dp"-->
+<!--            android:layout_height="65dp"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:layout_marginBottom="16dp"-->
+<!--            android:src="@drawable/userprofile"-->
+<!--            app:layout_constraintVertical_bias="0.0" />-->
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="64dp"
-            android:layout_height="65dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:src="@drawable/userprofile"
-            app:layout_constraintVertical_bias="0.0" />
+<!--        <de.hdodenhof.circleimageview.CircleImageView-->
+<!--            android:layout_width="64dp"-->
+<!--            android:layout_height="65dp"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:layout_marginBottom="16dp"-->
+<!--            android:src="@drawable/userprofile"-->
+<!--            app:layout_constraintVertical_bias="0.0" />-->
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="64dp"
-            android:layout_height="65dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:src="@drawable/userprofile"
-            app:layout_constraintVertical_bias="0.0" />
+<!--        <de.hdodenhof.circleimageview.CircleImageView-->
+<!--            android:layout_width="64dp"-->
+<!--            android:layout_height="65dp"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:layout_marginBottom="16dp"-->
+<!--            android:src="@drawable/userprofile"-->
+<!--            app:layout_constraintVertical_bias="0.0" />-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/post_rv"
@@ -64,6 +64,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/materialToolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

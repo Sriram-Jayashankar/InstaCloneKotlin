@@ -46,5 +46,9 @@ class LoginActivity : AppCompatActivity() {
                     }
             }
         }
+        binding.signUprender.setOnClickListener {
+            startActivity(Intent(this@LoginActivity,signUpActivity::class.java))
+            finish()
+        }
     }
 }

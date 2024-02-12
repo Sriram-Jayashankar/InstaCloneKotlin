@@ -108,6 +108,7 @@ class signUpActivity : AppCompatActivity() {
                                             HomeActivity::class.java
                                         )
                                     )
+                                    finish()
                                 }
                                 .addOnFailureListener { e ->
                                     Log.w("why", "Error adding document", e)
@@ -130,6 +131,7 @@ class signUpActivity : AppCompatActivity() {
         }
         binding.loginrender.setOnClickListener {
             startActivity(Intent(this@signUpActivity, LoginActivity::class.java))
+            finish()
         }
     }
 }

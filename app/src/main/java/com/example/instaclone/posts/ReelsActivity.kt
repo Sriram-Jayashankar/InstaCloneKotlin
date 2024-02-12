@@ -4,6 +4,7 @@ import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.instaclone.HomeActivity
 import com.example.instaclone.R
@@ -27,7 +28,7 @@ class ReelsActivity : AppCompatActivity() {
     val binding by lazy{
         ActivityReelsBinding.inflate(layoutInflater)
     }
-    private lateinit var VideoUrl:String
+    private  var VideoUrl:String?=null
     lateinit var progressDialog:ProgressDialog
     private val launcher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
         uri?.let {
@@ -59,6 +60,10 @@ class ReelsActivity : AppCompatActivity() {
             finish()
         }
         binding.postBtn.setOnClickListener{
+            val caption = binding.Caption.editText?.text.toString()
+            if (VideoUrl == null || caption.isEmpty()) {
+                Toast.makeText(this, "Please fill in all the fields", Toast.LENGTH_SHORT).show()
+            } else {
             Firebase.firestore.collection(USER_NODE).document(Firebase.auth.currentUser!!.uid).get()
                 .addOnSuccessListener {
                     var user:User=it.toObject<User>()!!
@@ -79,6 +84,7 @@ class ReelsActivity : AppCompatActivity() {
                         }
                 }
 
+        }
         }
     }
 }

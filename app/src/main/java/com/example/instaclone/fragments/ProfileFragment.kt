@@ -68,8 +68,8 @@ class ProfileFragment : Fragment() {
         Firebase.firestore.collection(USER_NODE).document(Firebase.auth.currentUser!!.uid).get()
             .addOnSuccessListener {
                 val user:User=it.toObject<User>()!!
-                binding.name.text=user.name
-                binding.bio.text=user.email
+                binding.name.text="Name : "+user.name
+                binding.bio.text="Email : "+user.email
                 if(!user.image.isNullOrEmpty())
                 {
                     Picasso.get().load(user.image).into(binding.profileImage)
